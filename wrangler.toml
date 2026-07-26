@@ -2,13 +2,13 @@ name = "formkeeper"
 compatibility_date = "2026-07-26"
 compatibility_flags = ["nodejs_compat"]
 
-vars = { TURNSTILE_SECRET = "", EMAIL_FROM = "formkeeper@example.com", EMAIL_TO = "" }
+vars = { TURNSTILE_SECRET = "", EMAIL_FROM = "formkeeper@successmove000.email", EMAIL_TO = "" }
 
 [[d1_databases]]
 binding = "FORMS_DB"
 database_name = "formkeeper-db"
-database_id = "your-database-id"
+database_id = "aac858b7-6b00-4b7d-8075-c6adb36f6441"
 
 [[kv_namespaces]]
 binding = "FORMS_KV"
-id = "your-kv-namespace-id"
+id = "92ffda2d9a884472b58e2f266a532e1e"

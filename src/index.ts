@@ -143,36 +143,82 @@ function checkAuth(request: Request, env: Env): boolean {
 
 const LANDING_PAGE = `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FormKeeper</title>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FormKeeper - Form Backend Service | $20 Setup</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;color:#e0e0e0;line-height:1.6}
-.container{max-width:800px;margin:0 auto;padding:2rem}
-header{text-align:center;padding:4rem 0 2rem}
+.container{max-width:900px;margin:0 auto;padding:2rem}
+header{text-align:center;padding:3rem 0 1rem}
 h1{font-size:3rem;font-weight:800;background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .subtitle{color:#888;font-size:1.1rem;margin-top:0.5rem}
-.features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:3rem 0}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
 .feature{background:#13131a;border:1px solid #1e1e2a;border-radius:12px;padding:1.5rem}
 .feature h3{color:#a855f7;margin-bottom:0.5rem}
 .feature p{color:#888;font-size:0.9rem}
-.cta{text-align:center;padding:2rem 0}
+.cta{text-align:center;padding:1.5rem 0}
 .cta a{display:inline-block;background:linear-gradient(135deg,#6366f1,#a855f7);color:white;padding:0.75rem 2rem;border-radius:8px;text-decoration:none;font-weight:600}
 code{background:#1a1a2a;padding:0.2rem 0.4rem;border-radius:4px;font-size:0.85rem}
 pre{background:#13131a;border:1px solid #1e1e2a;border-radius:8px;padding:1rem;overflow-x:auto;margin:1rem 0;font-size:0.85rem}
+.pricing{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0}
+.plan{background:#13131a;border:1px solid #1e1e2a;border-radius:12px;padding:1.5rem;text-align:center}
+.plan.featured{border-color:#a855f7}
+.plan h2{font-size:1.5rem;margin-bottom:0.5rem}
+.plan .price{font-size:2.5rem;font-weight:800;color:#a855f7}
+.plan .price span{font-size:1rem;color:#888}
+.plan ul{list-style:none;margin:1rem 0;text-align:left}
+.plan ul li{padding:0.3rem 0;color:#aaa;font-size:0.9rem}
+.plan ul li:before{content:'✓ ';color:#a855f7}
 </style></head>
 <body><div class="container">
-<header><h1>FormKeeper</h1><p class="subtitle">Simple form backend — submit, store, and get notified</p></header>
-<div class="features">
-<div class="feature"><h3>Receive Submissions</h3><p>POST any form data, we store it</p></div>
-<div class="feature"><h3>Turnstile Protection</h3><p>Built-in spam protection</p></div>
-<div class="feature"><h3>Dashboard</h3><p>View submissions online</p></div>
-<div class="feature"><h3>Email Alerts</h3><p>Get notified on each submission</p></div>
+<header><h1>FormKeeper</h1><p class="subtitle">Form backend for static sites. Submit forms, store data, get notified.</p></header>
+
+<div class="pricing">
+<div class="plan">
+<h2>Self-Host</h2>
+<div class="price">$0 <span>free</span></div>
+<ul>
+<li>Deploy on your Cloudflare</li>
+<li>Full source code on GitHub</li>
+<li>D1 + KV + Email</li>
+<li>Turnstile included</li>
+</ul>
+<a href="https://github.com/TheForgivenOne/formkeeper" class="cta" style="display:block;background:#1e1e2a;color:#ccc;text-decoration:none;padding:0.5rem;border-radius:6px;font-size:0.9rem">View on GitHub</a>
 </div>
-<div class="cta"><a href="/dashboard">Dashboard →</a></div>
+<div class="plan featured">
+<h2>Setup Service</h2>
+<div class="price">$20 <span>one-time</span></div>
+<ul>
+<li>Deployed on your Cloudflare</li>
+<li>Custom domain support</li>
+<li>Turnstile + Email configured</li>
+<li>30 min setup time</li>
+</ul>
+<a href="mailto:successmove000@gmail.com?subject=FormKeeper%20Setup" class="cta" style="display:block;background:linear-gradient(135deg,#6366f1,#a855f7);color:white;text-decoration:none;padding:0.5rem;border-radius:6px;font-size:0.9rem;font-weight:600">Email to Order</a>
+</div>
+<div class="plan">
+<h2>Hosted</h2>
+<div class="price">Free <span>beta</span></div>
+<ul>
+<li>Shared endpoint</li>
+<li>100 submissions/month</li>
+<li>Dashboard access</li>
+<li>Email alerts</li>
+</ul>
+<a href="/dashboard" class="cta" style="display:block;background:#1e1e2a;color:#ccc;text-decoration:none;padding:0.5rem;border-radius:6px;font-size:0.9rem">Get Started</a>
+</div>
+</div>
+
+<div class="features">
+<div class="feature"><h3>Receive Submissions</h3><p>POST any form data, we store and forward it</p></div>
+<div class="feature"><h3>Turnstile Protection</h3><p>Built-in Cloudflare Turnstile spam filtering</p></div>
+<div class="feature"><h3>Dashboard</h3><p>View and manage submissions online</p></div>
+<div class="feature"><h3>D1 Storage</h3><p>All submissions stored with IP and timestamp</p></div>
+</div>
+
 <h2>Quick Start</h2>
 <pre>curl -X POST https://formkeeper.successmove000.workers.dev/api/forms/YOUR_SLUG/submit \\\\
   -H "Content-Type: application/json" \\\\
-  -d '{"name":"John","email":"john@example.com"}'</pre>
+  -d '{"name":"John","email":"john@example.com","message":"Hello!"}'</pre>
 </div></body></html>`;
 
 const DASHBOARD_PAGE = `<!DOCTYPE html>
